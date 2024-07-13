@@ -32,4 +32,11 @@ rootProject.buildFileName = "build.gradle.kts"
 include("teavm")
 include("desktop")
 include("core")
-include("android")
+//include("android")
+
+//
+//includeBuild("E:\\Dev\\Projects\\java\\gdx-teavm") {
+//    dependencySubstitution {
+//        substitute(module("com.github.xpenatan.gdx-teavm:backend-teavm")).using(project(":backends:backend-teavm"))
+//    }
+//}

@@ -24,6 +24,8 @@ object TeaVMLauncher {
             width = 900
             height = 900
         }
+        //Uncomment to try b9 version
+//        config.storagePrefix = "app:"
 
         TeaApplication(create(), config)
     }

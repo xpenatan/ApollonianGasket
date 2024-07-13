@@ -4,12 +4,14 @@ package io.github.thanosfisherman.gasket.teavm
 import com.github.xpenatan.gdx.backends.teavm.config.AssetFileHandle
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuildConfiguration
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuilder
+import org.teavm.vm.TeaVMOptimizationLevel
 import java.io.File
 
 /** Builds the TeaVM/HTML application.  */
 fun main() {
     val teaBuildConfiguration = TeaBuildConfiguration()
     teaBuildConfiguration.assetsPath.add(AssetFileHandle("../assets"))
+//    teaBuildConfiguration.assetsPath.add(File("../assets"))
     teaBuildConfiguration.webappPath = File("build/dist").getCanonicalPath()
 
     // Register any extra classpath assets here:
@@ -19,5 +21,7 @@ fun main() {
     // TeaReflectionSupplier.addReflectionClass("io.github.thanosfisherman.gasket.reflect");
     val tool = TeaBuilder.config(teaBuildConfiguration)
     tool.mainClass = TeaVMLauncher::class.java.getName()
+    tool.optimizationLevel = TeaVMOptimizationLevel.FULL
+    tool.setObfuscated(false)
     TeaBuilder.build(tool)
 }

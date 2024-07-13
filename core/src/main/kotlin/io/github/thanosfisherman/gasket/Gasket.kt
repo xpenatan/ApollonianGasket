@@ -1,4 +1,4 @@
-package io.github.thanosfisherman.gasket
+ package io.github.thanosfisherman.gasket
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.math.MathUtils
@@ -14,8 +14,8 @@ private val width = Gdx.graphics.width.toFloat()
 private val height = Gdx.graphics.height.toFloat()
 
 class Gasket {
-    private val coneSegments = intArrayOf(4, 8, 20, 50).random()
-    private val isConeShape = RandomXS128().nextInt(3) == 0
+    private val coneSegments = intArrayOf(4, 8, 20, 50)[FirstScreen.GLOBAL_RANDOM.nextInt(4)]
+    private val isConeShape = FirstScreen.GLOBAL_RANDOM.nextInt(3) == 0
     private val colorRandomizer = ColorRandomizer()
 
     // Initialize first circle centered on canvas
@@ -131,8 +131,7 @@ class Gasket {
 
     private fun randomFloatRange(min: Float, max: Float): Float {
         require(min < max) { "max must be greater than min" }
-        val ran = RandomXS128()
-        val result = min + ran.nextFloat() * (max - min)
+        val result = min + FirstScreen.GLOBAL_RANDOM.nextFloat() * (max - min)
         return result
     }
 }

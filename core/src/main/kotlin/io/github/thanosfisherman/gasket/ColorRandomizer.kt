@@ -1,7 +1,6 @@
 package io.github.thanosfisherman.gasket
 
 import com.badlogic.gdx.graphics.Color
-import com.badlogic.gdx.math.RandomXS128
 
 private val colorArray =
     arrayOf(
@@ -40,12 +39,12 @@ private val colorArray =
 
 class ColorRandomizer {
 
-    private val isMultiColor = RandomXS128().nextInt(2) == 0
-    private val fixedColor = colorArray.random()
+    private val isMultiColor = FirstScreen.GLOBAL_RANDOM.nextInt(2) == 0
+    private val fixedColor = colorArray[FirstScreen.GLOBAL_RANDOM.nextInt(colorArray.size)]
 
     fun randomColor(): Color {
         if (isMultiColor)
-            return colorArray.random()
+            return colorArray[FirstScreen.GLOBAL_RANDOM.nextInt(colorArray.size)]
         return fixedColor
     }
 }
